@@ -15,15 +15,15 @@ class FormContainer extends Component {
             },
 
             exercisesList: [
-                { id: 1, title: 'situps', category: 'abs' },
-                { id: 2, title: 'plank', category: 'abs' },
-                { id: 3, title: 'pushups', category: 'abs' },
-                { id: 4, title: 'bicepscurls', category: 'arms' },
-                { id: 5, title: 'tricepsextention', category: 'arms' },
-                { id: 6, title: 'benchpress', category: 'arms' },
-                { id: 7, title: 'squats', category: 'legs' },
-                { id: 8, title: 'lounges', category: 'legs' },
-                { id: 9, title: 'calvesstretch', category: 'legs' }
+                'situps',
+                'plank',
+                'pushups',
+                'bicepscurls',
+                'tricepsextention',
+                'benchpress',
+                'squats',
+                'lounges',
+                'calvesstretch'
             ]
         }
 
@@ -52,7 +52,69 @@ class FormContainer extends Component {
 
         this.setState( prevState => ({ newRoutine: {...prevState.newRoutine, exercises: newSelectionArray}}))
     }
-    
+
+    handleClearForm(e) {
+        e.preventDefault();
+        this.setState({
+            newRoutine: {
+                title: '',
+                exercises: []
+            }
+        })
+    }
+
+    handleFormSubmit(e) {
+        e.preventDefault();
+        this.setState({newRoutine: [...this.state.newRoutine, e]});
+    }
+
+    render() {
+        return (
+
+            <form className='container-fluid' onSubmit={this.handleFormSubmit}>
+            
+            <Input
+                inputType ={'text'}
+                title = {'Exercise routine name'}
+                name = {'name'}
+                value = {this.state.newRoutine.title}
+                placeholder = {'Enter a title'}
+                handleChange = {this.handleInput}
+            />
+
+            <CheckBox
+                title = {'Exercises'}
+                name = {'Exercises'}
+                options = {this.state.exercisesList}
+                selectedOptions = {this.state.newRoutine.exercises}
+                handleChange = {this.handleCheckBox}
+            />
+
+            <Button
+                action = {this.handleFormSubmit}
+                type = {'primary'}
+                title = {'Submit'}
+                style = {buttonStyle}
+            />
+
+            <Button
+                action = {this.handleClearForm}
+                type = {'secondary'}
+                title = {'Clear'}
+                style = {buttonStyle}
+            />
+
+            </form>
+
+        );
+    }
+
 }
+
+const buttonStyle = {
+    margin: '10px 10px 10px 10px'
+}
+
+
 
 export default FormContainer;
