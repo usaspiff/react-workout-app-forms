@@ -79,7 +79,7 @@ class FormContainer extends Component {
                 name = {'name'}
                 value = {this.state.newRoutine.title}
                 placeholder = {'Enter a title'}
-                handleChange = {this.handleInput}
+                handleChange = {this.handleTitle}
             />
 
             <CheckBox
