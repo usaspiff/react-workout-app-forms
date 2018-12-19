@@ -8,7 +8,7 @@ class FormContainer extends Component {
     constructor(props) {
         super(props);
 
-        this.state= {
+        this.initialState= {
             newRoutine: {
                 title: '',
                 exercises: []
@@ -27,8 +27,10 @@ class FormContainer extends Component {
             ]
         }
 
+        this.state = this.initialState;
+
         this.handleTitle = this.handleTitle.bind(this);
-        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.submitForm = this.submitForm.bind(this);
         this.handleClearForm = this.handleClearForm.bind(this);
         this.handleCheckBox = this.handleCheckBox.bind(this);
     }
@@ -37,7 +39,7 @@ class FormContainer extends Component {
         let value = e.target.value;
         this.setState( prevState => ({ newRoutine :
             {...prevState.newRoutine, title: value}
-        }), () => console.log(this.state.newRoutine))
+        }), () => console.log(this.state.newRoutine.title))
     }
 
     handleCheckBox(e) {
@@ -63,15 +65,15 @@ class FormContainer extends Component {
         })
     }
 
-    handleFormSubmit(e) {
-        e.preventDefault();
-        this.setState({newRoutine: [...this.state.newRoutine, e]});
+    submitForm = () => {
+        this.props.handleSubmit(this.state);
+        this.setState(this.initialState);
     }
 
     render() {
         return (
 
-            <form className='container-fluid' onSubmit={this.handleFormSubmit}>
+            <form className='container-fluid' onSubmit={this.submitForm}>
             
             <Input
                 inputType ={'text'}
@@ -91,7 +93,7 @@ class FormContainer extends Component {
             />
 
             <Button
-                action = {this.handleFormSubmit}
+                action = {this.submitForm}
                 type = {'primary'}
                 title = {'Submit'}
                 style = {buttonStyle}
