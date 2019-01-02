@@ -7,6 +7,7 @@ const CheckBox = (props) => {
             <div className='checkbox'>
             {props.options.map(option => {
                 return (
+                    <div>
                     <label key={option} className='checkbox-inline'>
                         <input
 
@@ -17,6 +18,8 @@ const CheckBox = (props) => {
                         checked = {props.selectedOptions.indexOf(option) > -1}
                         type='checkbox' /> {option}
                     </label>
+                    <br />
+                    </div>
                 );
             })}
             </div>
