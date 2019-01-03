@@ -76,8 +76,8 @@ class FormContainer extends Component {
             <form className='container-fluid' onSubmit={this.submitForm}>
             
             <Input
-                inputType ={'text'}
-                title = {'Exercise routine name'}
+                inputType = {'text'}
+                title = {'Exercise routine name '}
                 name = {'name'}
                 value = {this.state.newRoutine.title}
                 placeholder = {'Enter a title'}
