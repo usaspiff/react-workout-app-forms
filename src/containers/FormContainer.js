@@ -67,6 +67,7 @@ class FormContainer extends Component {
 
     submitForm = () => {
         this.props.handleSubmit(this.state);
+        console.log(this.state)
         this.setState(this.initialState);
     }
 
@@ -76,7 +77,11 @@ class FormContainer extends Component {
             <form className='container-fluid' onSubmit={this.submitForm}>
             
             <Input
+<<<<<<< HEAD
                 inputType = {'text'}
+=======
+                inputType ={'text'}
+>>>>>>> addtable
                 title = {'Exercise routine name '}
                 name = {'name'}
                 value = {this.state.newRoutine.title}

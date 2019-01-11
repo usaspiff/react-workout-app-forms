@@ -1,19 +1,48 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-
-const PersoRoutines = (props) => {
+const TableHeader = () => {
     return (
-        <div>
-            <h3>Personnal routines:</h3>
-            {props.list.map(list => {
-                return (
-                    <p>
-                      {list}         
-                    </p>
-                );
-            })}
-        </div>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Edit</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
     );
 }
 
-export default PersoRoutines;
+const TableBody = props => {
+    const rows = props.workoutData.map((row, index) => {
+        return <tr key={index}>
+            <td>{row}</td>
+            <td>
+              <button onClick={() => props.editWorkout(index)}>
+                Edit
+              </button>
+            </td>
+            <td>
+              <button onClick={() => props.removeWorkout(index)}>
+                Delete
+              </button>
+            </td>
+          </tr>;
+    });
+
+    return <tbody>{rows}</tbody>;
+}
+
+class TablePerso extends Component {
+    render() {
+        const { workoutData, editWorkout, removeWorkout } = this.props;
+
+        return (
+            <table>
+                <TableHeader />
+                <TableBody workoutData={workoutData} editWorkout={editWorkout} removeWorkout={removeWorkout} />
+            </table>
+        );
+    }
+}
+
+export default TablePerso;
