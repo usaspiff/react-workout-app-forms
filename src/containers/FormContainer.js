@@ -67,6 +67,7 @@ class FormContainer extends Component {
 
     submitForm = () => {
         this.props.handleSubmit(this.state);
+        console.log(this.state)
         this.setState(this.initialState);
     }
 
@@ -77,7 +78,7 @@ class FormContainer extends Component {
             
             <Input
                 inputType ={'text'}
-                title = {'Exercise routine name'}
+                title = {'Exercise routine name '}
                 name = {'name'}
                 value = {this.state.newRoutine.title}
                 placeholder = {'Enter a title'}

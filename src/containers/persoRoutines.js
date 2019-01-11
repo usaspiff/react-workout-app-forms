@@ -15,7 +15,7 @@ const TableHeader = () => {
 const TableBody = props => {
     const rows = props.workoutData.map((row, index) => {
         return <tr key={index}>
-            <td>{row.title}</td>
+            <td>{row}</td>
             <td>
               <button onClick={() => props.editWorkout(index)}>
                 Edit

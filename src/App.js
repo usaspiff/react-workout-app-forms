@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 
 class App extends Component {
   state = {
-    workouts: []
+    workouts: ['workoutOne', 'workoutTwo']
   };
 
   // editWorkout = index => {
@@ -51,5 +51,6 @@ class App extends Component {
     );  
 }
 }
+
 
 export default App;
