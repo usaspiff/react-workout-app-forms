@@ -65,9 +65,10 @@ class FormContainer extends Component {
         })
     }
 
-    submitForm = () => {
-        this.props.handleSubmit(this.state);
-        console.log(this.state)
+    submitForm = (e) => {
+        e.preventDefault();
+        this.props.handleSubmit(this.state.newRoutine);
+        console.log(this.state.newRoutine)
         this.setState(this.initialState);
     }
 

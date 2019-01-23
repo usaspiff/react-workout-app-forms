@@ -7,7 +7,16 @@ import Footer from './components/Footer';
 
 class App extends Component {
   state = {
-    workouts: ['workoutOne', 'workoutTwo']
+    workouts: [
+      {
+        title: 'workoutOne',
+        exercises: [
+          'situps',
+          'planks'
+        ]
+      }
+
+    ]
   };
 
   // editWorkout = index => {
@@ -28,8 +37,14 @@ class App extends Component {
     });
   }
 
+  // startWorkout = index => {
+  //   const { workouts } = this.state;
+
+  // }
+
   handleSubmit = workout => {
-    this.setState({ workouts: [...this.state.workouts, workout] });
+    this.setState(prevState => ({ workouts: [...prevState.workouts, workout] }), () => console.log(this.state));
+    
   }
 
   render() {
@@ -43,6 +58,7 @@ class App extends Component {
         workoutData={workouts}
         editWorkout={this.editWorkout}
         removeWorkout={this.removeWorkout}
+        startWorkout={this.startWorkout}
       />
         <h3>Create a new excercise list</h3>
         <FormContainer handleSubmit={this.handleSubmit}  />
