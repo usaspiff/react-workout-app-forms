@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header';
 import TablePerso from './containers/persoRoutines';
+import TablePreset from './containers/presetRoutines';
 import FormContainer from './containers/FormContainer';
 import Footer from './components/Footer';
 
@@ -9,13 +10,21 @@ class App extends Component {
   state = {
     workouts: [
       {
-        title: 'workoutOne',
-        exercises: [
-          'situps',
-          'planks'
-        ]
+        title: "workoutOne",
+        exercises: ["situps", "planks"]
+      },
+      {
+        title: "workoutTwo",
+        exercises: ["situpss", "plankss"]
+      },
+      {
+        title: "workoutThree",
+        exercises: ["situpsss", "planksss"]
+      },
+      {
+        title: "workoutFor",
+        exercises: ["situpssss", "plankssss"]
       }
-
     ]
   };
 
@@ -35,7 +44,7 @@ class App extends Component {
         return i !== index;
       })
     });
-  }
+  };
 
   // startWorkout = index => {
   //   const { workouts } = this.state;
@@ -43,29 +52,34 @@ class App extends Component {
   // }
 
   handleSubmit = workout => {
-    this.setState(prevState => ({ workouts: [...prevState.workouts, workout] }), () => console.log(this.state));
-    
-  }
+    this.setState(
+      prevState => ({ workouts: [...prevState.workouts, workout] }),
+      () => console.log(this.state)
+    );
+  };
 
   render() {
-
     const { workouts } = this.state;
 
-    return(
+    return (
       <div className="col-md-6" style={{ marginLeft: "40px" }}>
         <Header />
-      <TablePerso
-        workoutData={workouts}
-        editWorkout={this.editWorkout}
-        removeWorkout={this.removeWorkout}
-        startWorkout={this.startWorkout}
-      />
+        <TablePerso
+          workoutData={workouts}
+          editWorkout={this.editWorkout}
+          removeWorkout={this.removeWorkout}
+          startWorkout={this.startWorkout}
+        />
         <h3>Create a new excercise list</h3>
-        <FormContainer handleSubmit={this.handleSubmit}  />
+        <FormContainer handleSubmit={this.handleSubmit} />
+        <TablePreset
+          workoutData={workouts}
+          startWorkout={this.startWorkout}
+        />
         <Footer />
       </div>
-    );  
-}
+    );
+  }
 }
 
 

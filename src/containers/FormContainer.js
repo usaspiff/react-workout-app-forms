@@ -95,7 +95,6 @@ class FormContainer extends Component {
             />
 
             <Button
-                action = {this.submitForm}
                 type = {'primary'}
                 title = {'Submit'}
                 style = {buttonStyle}

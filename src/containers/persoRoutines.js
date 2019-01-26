@@ -14,25 +14,21 @@ const TableHeader = () => {
 }
 
 const TableBody = props => {
-    const rows = props.workoutData.map((row, index) => {
-        return <tr key={index}>
-            <td>{row.title}</td>
-            <td>
-              <button onClick={() => props.editWorkout(index)}>
-                Edit
-              </button>
-            </td>
-            <td>
-              <button onClick={() => props.removeWorkout(index)}>
-                Delete
-              </button>
-            </td>
-            <td>
-                <button onClick={() => props.startWorkout(index)}>
-                    Start
-              </button>
-            </td>
-          </tr>;
+    const rows = props.workoutData.slice(3).map((row, index) => {
+      return <tr key={index}>
+          <td>{row.title}</td>
+          <td>
+            <button onClick={() => props.editWorkout(index)}>Edit</button>
+          </td>
+          <td>
+            <button onClick={() => props.removeWorkout(index)}>
+              Delete
+            </button>
+          </td>
+          <td>
+            <button onClick={() => props.startWorkout(index)}>Start</button>
+          </td>
+        </tr>;
     });
 
     return <tbody>{rows}</tbody>;
