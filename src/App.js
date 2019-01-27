@@ -64,13 +64,20 @@ class App extends Component {
     return (
       <div className="col-md-6" style={{ marginLeft: "40px" }}>
         <Header />
+
+        {workouts.length > 3 ?
         <TablePerso
           workoutData={workouts}
           editWorkout={this.editWorkout}
           removeWorkout={this.removeWorkout}
           startWorkout={this.startWorkout}
         />
-        <h3>Create a new excercise list</h3>
+          :
+        <div>
+          <h3>No personnal routine yet</h3>
+          <p>+ Create routine +</p>
+        </div>
+        }
         <FormContainer handleSubmit={this.handleSubmit} />
         <TablePreset
           workoutData={workouts}

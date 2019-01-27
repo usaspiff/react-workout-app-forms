@@ -45,6 +45,7 @@ class TablePerso extends Component {
               <TableBody workoutData={workoutData} editWorkout={editWorkout} removeWorkout={removeWorkout}
               startWorkout={startWorkout} />
             </table>
+            <p>+ Add routine +</p>
           </div>;
     }
 }
