@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Button from "react-bootstrap/Button";
+
 
 const TableHeader = () => {
     return (
@@ -18,15 +20,15 @@ const TableBody = props => {
       return <tr key={index}>
           <td>{row.title}</td>
           <td>
-            <button onClick={() => props.editWorkout(index)}>Edit</button>
+            <Button onClick={() => props.editWorkout(index)}>Edit</Button>
           </td>
           <td>
-            <button onClick={() => props.removeWorkout(index)}>
+            <Button onClick={() => props.removeWorkout(index)}>
               Delete
-            </button>
+            </Button>
           </td>
           <td>
-            <button onClick={() => props.startWorkout(index)}>Start</button>
+            <Button onClick={() => props.startWorkout(index)}>Start</Button>
           </td>
         </tr>;
     });
@@ -45,7 +47,6 @@ class TablePerso extends Component {
               <TableBody workoutData={workoutData} editWorkout={editWorkout} removeWorkout={removeWorkout}
               startWorkout={startWorkout} />
             </table>
-            <p>+ Add routine +</p>
           </div>;
     }
 }
