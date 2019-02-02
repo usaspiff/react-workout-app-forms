@@ -6,6 +6,7 @@ import TablePreset from './containers/presetRoutines';
 import FormContainer from './containers/FormContainer';
 // import EditForm from "./containers/EditForm";
 import Footer from './components/Footer';
+import TestList from './components/TestList';
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
@@ -32,7 +33,8 @@ class App extends Component {
       }
     ],
 
-    showForm: false
+    showForm: false,
+    showTest: false
   };
 
   // editWorkout = index => {
@@ -45,11 +47,11 @@ class App extends Component {
 
   handleClose = () => {
     this.setState({ showForm: false });
-  }
+  };
 
   handleShow = () => {
     this.setState({ showForm: true });
-  }
+  };
 
   removeWorkout = index => {
     const { workouts } = this.state;
@@ -61,34 +63,31 @@ class App extends Component {
     });
   };
 
-  // startWorkout = index => {
-  //   const { workouts } = this.state;
-
-  // }
+  startWorkout = index => {
+    // const { workouts } = this.state;
+    // return workouts,
+     this.setState({ showTest: true });
+    console.log(index);
+  };
 
   handleSubmit = workout => {
-    this.setState(prevState => ({ workouts: [...prevState.workouts, workout] }), () => console.log(this.state));
+    this.setState(
+      prevState => ({ workouts: [...prevState.workouts, workout] }),
+      () => console.log(this.state)
+    );
     this.setState({ showForm: false });
-
-  }
+  };
 
   render() {
     const { workouts } = this.state;
+    const showTestTitle = this.state.showTest;
 
-    return (
-      <div className="col-md-6" style={{ marginLeft: "40px" }}>
+    return <div className="col-md-6" style={{ marginLeft: "40px" }}>
         <Header />
 
-        {workouts.length > 3 ? (
-          <TablePerso
-            workoutData={workouts}
-            editWorkout={this.editWorkout}
-            removeWorkout={this.removeWorkout}
-            startWorkout={this.startWorkout}
-          />
-        ) : (
-              <h3>No personnal routine yet</h3>
-          )}
+        {workouts.length > 3 ? <TablePerso workoutData={workouts} editWorkout={this.editWorkout} removeWorkout={this.removeWorkout} startWorkout={this.startWorkout} /> : <h3>
+            No personnal routine yet
+          </h3>}
 
         <Button variant="primary" onClick={this.handleShow}>
           + Create Routine
@@ -104,9 +103,11 @@ class App extends Component {
         </Modal>
         {/* <EditForm editSubmit={this.editSubmit} /> */}
         <TablePreset workoutData={workouts} startWorkout={this.startWorkout} />
+        {showTestTitle === true && 
+        <TestList title={this.state.workouts[2].exercises} />
+      }
         <Footer />
-      </div>
-    );
+      </div>;
   }
 }
 
