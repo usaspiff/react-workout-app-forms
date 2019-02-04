@@ -34,7 +34,7 @@ class App extends Component {
     ],
 
     showForm: false,
-    showTest: false
+    showTest: false,
   };
 
   // editWorkout = index => {
@@ -64,10 +64,11 @@ class App extends Component {
   };
 
   startWorkout = index => {
-    // const { workouts } = this.state;
-    // return workouts,
-     this.setState({ showTest: true });
-    console.log(index);
+    const { workouts } = this.state;
+    const workoutSelect = workouts.filter((workout, i) => {
+      return i === index+3; //take into account the order in the perso table workout, add +3.
+    });
+    return workoutSelect[0].title;
   };
 
   handleSubmit = workout => {
@@ -80,7 +81,7 @@ class App extends Component {
 
   render() {
     const { workouts } = this.state;
-    const showTestTitle = this.state.showTest;
+    const { showTestTitle } = this.state.showTest;
 
     return <div className="col-md-6" style={{ marginLeft: "40px" }}>
         <Header />
@@ -101,11 +102,13 @@ class App extends Component {
             <FormContainer handleSubmit={this.handleSubmit} />
           </Modal.Body>
         </Modal>
+
         {/* <EditForm editSubmit={this.editSubmit} /> */}
+
         <TablePreset workoutData={workouts} startWorkout={this.startWorkout} />
-        {showTestTitle === true && 
-        <TestList title={this.state.workouts[2].exercises} />
-      }
+
+        {showTestTitle === true && <TestList />}
+      <TestList title={"placeholder"}/>
         <Footer />
       </div>;
   }

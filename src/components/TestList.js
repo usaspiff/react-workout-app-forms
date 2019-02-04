@@ -26,10 +26,11 @@ import React from 'react';
 
 const TestList = (props) => {
     return (
-        <h4>
-            {props.title}
-        </h4>
-    )
+      <div>
+          <p>Extract the routine info after clicking it in the table</p>
+        <h4>{props.title}</h4>
+      </div>
+    );
 
 
 }
