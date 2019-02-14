@@ -6,7 +6,7 @@ import TablePreset from './containers/presetRoutines';
 import FormContainer from './containers/FormContainer';
 // import EditForm from "./containers/EditForm";
 import Footer from './components/Footer';
-import TestList from './components/TestList';
+import Playback from './components/Playback';
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
@@ -35,6 +35,7 @@ class App extends Component {
 
     showForm: false,
     showTest: false,
+    showPlayback: false,
   };
 
   // editWorkout = index => {
@@ -44,6 +45,19 @@ class App extends Component {
 
   //   })
   // }
+
+  /* IMPLEMENTATION OF LOCALSTORAGE */
+  // componentDidMount() {
+  //   const savedRoutines = JSON.parse(localStorage.getItem("workouts"));
+  //   this.setState({ savedRoutines });
+  // }
+  
+
+  // componentDidUpdate() {
+  //   localStorage.setItem("workouts", JSON.stringify(this.state.workouts));
+  // }
+
+  /* ******************************** */
 
   handleClose = () => {
     this.setState({ showForm: false });
@@ -63,12 +77,20 @@ class App extends Component {
     });
   };
 
-  startWorkout = index => {
+  handlePlayback = () => {
+    this.setState({ showPlayback: false });
+  };
+
+  startWorkout = (index) => {
+    // e.preventDefault();
+    
+    this.setState({ showPlayback: true })
     const { workouts } = this.state;
     const workoutSelect = workouts.filter((workout, i) => {
       return i === index+3; //take into account the order in the perso table workout, add +3.
     });
-    return workoutSelect[0].title;
+    return workoutSelect[0];
+    
   };
 
   handleSubmit = workout => {
@@ -81,10 +103,11 @@ class App extends Component {
 
   render() {
     const { workouts } = this.state;
-    const { showTestTitle } = this.state.showTest;
-
+    
     return <div className="col-md-6" style={{ marginLeft: "40px" }}>
         <Header />
+
+        {this.state.showPlayback === true && <Playback handlePlayback={this.handlePlayback}/>}
 
         {workouts.length > 3 ? <TablePerso workoutData={workouts} editWorkout={this.editWorkout} removeWorkout={this.removeWorkout} startWorkout={this.startWorkout} /> : <h3>
             No personnal routine yet
@@ -107,8 +130,6 @@ class App extends Component {
 
         <TablePreset workoutData={workouts} startWorkout={this.startWorkout} />
 
-        {showTestTitle === true && <TestList />}
-      <TestList title={"placeholder"}/>
         <Footer />
       </div>;
   }

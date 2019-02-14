@@ -19,7 +19,7 @@ const TableBody = props => {
     const rows = props.workoutData.slice(3).map((row, index) => {
         return <tr key={index}>
           <td>
-            <Button onClick={() => props.startWorkout(index)}>
+            <Button onClick={() => props.startWorkout()}>
               {row.title}
             </Button>
           </td>
