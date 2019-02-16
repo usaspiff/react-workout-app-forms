@@ -36,6 +36,7 @@ class App extends Component {
     showForm: false,
     showTest: false,
     showPlayback: false,
+    selectedExercise: '',
   };
 
   // editWorkout = index => {
@@ -81,16 +82,13 @@ class App extends Component {
     this.setState({ showPlayback: false });
   };
 
-  startWorkout = (index) => {
-    // e.preventDefault();
-    
-    this.setState({ showPlayback: true })
-    const { workouts } = this.state;
-    const workoutSelect = workouts.filter((workout, i) => {
-      return i === index+3; //take into account the order in the perso table workout, add +3.
-    });
-    return workoutSelect[0];
-    
+  startWorkout = (row) => {
+    this.setState({ showPlayback: true });
+    this.setState({ selectedExercise: [] });
+    this.setState(
+      prevState => ({ selectedExercise: [...prevState.selectedExercise, row] }),
+      () => console.log(this.state.selectedExercise[0].exercises)
+    );
   };
 
   handleSubmit = workout => {
@@ -107,7 +105,7 @@ class App extends Component {
     return <div className="col-md-6" style={{ marginLeft: "40px" }}>
         <Header />
 
-        {this.state.showPlayback === true && <Playback handlePlayback={this.handlePlayback}/>}
+      {this.state.showPlayback === true && <Playback handlePlayback={this.handlePlayback} selectedExercise={this.state.selectedExercise} />}
 
         {workouts.length > 3 ? <TablePerso workoutData={workouts} editWorkout={this.editWorkout} removeWorkout={this.removeWorkout} startWorkout={this.startWorkout} /> : <h3>
             No personnal routine yet

@@ -2,27 +2,22 @@ import React, { Component } from 'react';
 import Button from "react-bootstrap/Button";
 
 class Playback extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            showForm: props.showForm,
-        }
-    }
-    closePlayback = e => {
-        e.preventDefault();
-        this.props.handlePlayback(this.state.showForm);
+    
+    closePlayback = () => {
+        this.props.handlePlayback();
     }
 
     render() {
+        const exercises = this.props.selectedExercise[0].exercises;
+        const exerciseList = exercises.map((exercise) => {
+            return <li key={exercise}>{exercise}</li>
+        });
         return(
             <div>
-                <h2>Routine Title</h2>
-                <span><Button>Prev.</Button>Current Excercise<Button>Next</Button></span>
+                <h2>{this.props.selectedExercise[0].title}</h2>
+                <span><Button>Prev.</Button>Current Exercise<Button>Next</Button></span>
                 <ul>
-                    <li>excercise one</li>
-                    <li>excercise two</li>
-                    <li>excercise three</li>
+                    {exerciseList}
                 </ul>
                 <Button onClick={this.closePlayback}>Close</Button>
             </div>
