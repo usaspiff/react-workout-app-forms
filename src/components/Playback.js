@@ -3,20 +3,20 @@ import Button from "react-bootstrap/Button";
 
 class Playback extends Component {
     state = {
-        index: 0,
+        listIndex: 0,
     }
 
     increment = () => {
-        this.state.index < this.props.selectedExercise[0].exercises.length -1 &&
+        this.state.listIndex < this.props.selectedExercise[0].exercises.length -1 &&
         this.setState({
-            index: this.state.index +1
+            listIndex: this.state.listIndex +1
         })
     }
 
     decrement = () => {
-        this.state.index > 0 &&
+        this.state.listIndex > 0 &&
         this.setState({
-            index: this.state.index -1
+            listIndex: this.state.listIndex -1
         })
     }
 
@@ -25,18 +25,24 @@ class Playback extends Component {
     }
 
     render() {
-        const index = this.state.index;
-        const displayExercise = this.props.selectedExercise[0].exercises[index];
+        const selectedExerciseStyle = {
+            color: 'red',
+        };
+        const listIndex = this.state.listIndex;
+        const displayExercise = this.props.selectedExercise[0].exercises[listIndex];
         const exercises = this.props.selectedExercise[0].exercises;
-        const exerciseList = exercises.map((exercise) => {
-            return <li key={exercise}>{exercise}</li>
+        const exerciseList = exercises.map((exercise, index) => { if(index === this.state.listIndex) {
+            return <li key={index} style={selectedExerciseStyle}>{exercise}</li>  
+        } else {
+            return <li key={index}>{exercise}</li>
+        }
         });
         console.log(displayExercise)
         return (
             <div>
                 <h2>{this.props.selectedExercise[0].title}</h2>
                 <span>
-                    <Button onClick={this.decrement}>Prev.</Button>     {displayExercise}<Button onClick={this.increment}>Next</Button></span>
+                    <Button onClick={this.decrement}>Prev.</Button>{displayExercise}<Button onClick={this.increment}>Next</Button></span>
                 <ul>
                     {exerciseList}
                 </ul>
