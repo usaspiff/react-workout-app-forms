@@ -4,7 +4,7 @@ import Header from './components/Header';
 import TablePerso from './containers/persoRoutines';
 import TablePreset from './containers/presetRoutines';
 import FormContainer from './containers/FormContainer';
-// import EditForm from "./containers/EditForm";
+import EditForm from "./containers/EditForm";
 import Footer from './components/Footer';
 import Playback from './components/Playback';
 import Modal from "react-bootstrap/Modal";
@@ -34,18 +34,15 @@ class App extends Component {
     ],
 
     showForm: false,
+    showEditForm: false,
     showTest: false,
     showPlayback: false,
     selectedExercise: '',
+    editExercise: '',
   };
 
-  // editWorkout = index => {
-  //   const { workouts } = this.state;
-
-  //   this.setState({
-
-  //   })
-  // }
+  
+  
 
   /* IMPLEMENTATION OF LOCALSTORAGE */
   // componentDidMount() {
@@ -61,7 +58,10 @@ class App extends Component {
   /* ******************************** */
 
   handleClose = () => {
-    this.setState({ showForm: false });
+    this.setState({ 
+      showForm: false,
+      showEditForm: false
+    });
   };
 
   handleShow = () => {
@@ -76,6 +76,17 @@ class App extends Component {
         return i !== index;
       })
     });
+  };
+
+  editWorkout = (index) => {
+    const { workouts } = this.state;
+    
+    this.setState({ editExercise: [] });
+    this.setState(
+      prevState => ({ editExercise: [...prevState.editExercise, workouts[index]] }),
+      () => console.log(this.state.editExercise[0].title)
+    );
+    this.setState({ showEditForm: true });
   };
 
   handlePlayback = () => {
@@ -117,14 +128,23 @@ class App extends Component {
 
         <Modal show={this.state.showForm} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>New Workout Routine</Modal.Title>
+            <Modal.Title>New workout routine</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <FormContainer handleSubmit={this.handleSubmit} />
           </Modal.Body>
         </Modal>
 
-        {/* <EditForm editSubmit={this.editSubmit} /> */}
+
+        <Modal show={this.state.showEditForm} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Edit Workout Routine</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+          <EditForm editExercise={this.state.editExercise} editSubmit={this.editSubmit} handleClose={this.handleClose} />
+          </Modal.Body>
+        </Modal>  
+        
 
         <TablePreset workoutData={workouts} startWorkout={this.startWorkout} />
 
