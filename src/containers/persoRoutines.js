@@ -32,7 +32,7 @@ const TableBody = props => {
             </Button>
           </td>
           <td>
-            <Button onClick={() => props.startWorkout(index)}>
+            <Button onClick={() => props.startWorkout(row)}>
               Start
             </Button>
           </td>
