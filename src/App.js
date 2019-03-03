@@ -70,15 +70,15 @@ class App extends Component {
 
   removeWorkout = index => {
     const { workouts } = this.state;
-
+    console.log(index);
     this.setState({
       workouts: workouts.filter((workout, i) => {
-        return i !== index;
+        return i !== index + 3;
       })
     });
   };
 
-  editWorkout = (index) => {
+  editWorkout = index => {
     const { workouts } = this.state;
     
     this.setState({ editExercise: [] });
@@ -93,7 +93,7 @@ class App extends Component {
     this.setState({ showPlayback: false });
   };
 
-  startWorkout = (row) => {
+  startWorkout = row => {
     this.setState({ showPlayback: true });
     this.setState({ selectedExercise: [] });
     this.setState(

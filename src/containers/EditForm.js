@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import ButtonForm from '../components/Button';
 import Input from '../components/Input';
-// import CheckBox from '../components/CheckBox';
+import CheckBox from '../components/CheckBox';
 
 class EditForm extends Component {
     constructor(props) {
@@ -29,7 +29,7 @@ class EditForm extends Component {
         this.handleTitle = this.handleTitle.bind(this);
         this.submitEditForm = this.submitEditForm.bind(this);
         this.handleCancelForm = this.handleCancelForm.bind(this);
-        // this.handleCheckBox = this.handleCheckBox.bind(this);
+        this.handleCheckBox = this.handleCheckBox.bind(this);
     }
 
     handleTitle(e) {
@@ -40,18 +40,18 @@ class EditForm extends Component {
         }), () => console.log(this.state.newRoutine.title))
     }
 
-    // handleCheckBox(e) {
-    //     const newSelection = e.target.value;
-    //     let newSelectionArray;
+    handleCheckBox(e) {
+        const newSelection = e.target.value;
+        let newSelectionArray;
 
-    //     if (this.state.newRoutine.exercises.indexOf(newSelection) > -1) {
-    //         newSelectionArray = this.state.newRoutine.exercises.filter(s => s !== newSelection)
-    //     } else {
-    //         newSelectionArray = [...this.state.newRoutine.exercises, newSelection];
-    //     }
+        if (this.state.newRoutine.exercises.indexOf(newSelection) > -1) {
+            newSelectionArray = this.state.newRoutine.exercises.filter(s => s !== newSelection)
+        } else {
+            newSelectionArray = [...this.state.newRoutine.exercises, newSelection];
+        }
 
-    //     this.setState(prevState => ({ newRoutine: { ...prevState.newRoutine, exercises: newSelectionArray } }))
-    // }
+        this.setState(prevState => ({ newRoutine: { ...prevState.newRoutine, exercises: newSelectionArray } }))
+    }
 
     handleCancelForm(e) {
         e.preventDefault();
@@ -87,13 +87,13 @@ class EditForm extends Component {
                     handleChange={this.handleTitle}
                 />
 
-                {/* <CheckBox
+                <CheckBox
                     title={'Exercises'}
                     name={'Exercises'}
                     options={this.state.exercisesList}
                     selectedOptions={this.state.newRoutine.exercises}
                     handleChange={this.handleCheckBox}
-                /> */}
+                />
 
                 <ButtonForm
                     action={this.submitEditForm}
