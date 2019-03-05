@@ -72,8 +72,8 @@ class EditForm extends Component {
     }
 
     render() {
-        const editRoutineTitle = this.state.newRoutine[0].title;
-        console.log(this.state.newRoutine.exercises)
+        const editRoutineTitle = this.state.newRoutine.title;
+        console.log(this.state.newRoutine)
         return (
 
             <form className='container-fluid' onSubmit={this.submitEditForm}>
@@ -91,7 +91,7 @@ class EditForm extends Component {
                     title={'Exercises'}
                     name={'Exercises'}
                     options={this.state.exercisesList}
-                    selectedOptions={this.state.newRoutine[0].exercises}
+                    selectedOptions={this.state.newRoutine.exercises}
                     handleChange={this.handleCheckBox}
                 />
 

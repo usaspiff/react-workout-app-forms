@@ -44,16 +44,20 @@ class App extends Component {
   
   
 
-  /* IMPLEMENTATION OF LOCALSTORAGE */
-  // componentDidMount() {
-  //   const savedRoutines = JSON.parse(localStorage.getItem("workouts"));
-  //   this.setState({ savedRoutines });
-  // }
+  /* LOCALSTORAGE */
+  componentDidMount() {
+    if (localStorage.getItem("workouts") !== null) {
+      const savedRoutines = JSON.parse(localStorage.getItem("workouts"));
+      this.setState({ workouts: savedRoutines });
+    }
+    
+  }
   
 
-  // componentDidUpdate() {
-  //   localStorage.setItem("workouts", JSON.stringify(this.state.workouts));
-  // }
+  componentDidUpdate() {
+    localStorage.setItem("workouts", JSON.stringify(this.state.workouts));
+    // console.log('localstorage is ' + this.state.workouts)
+  }
 
   /* ******************************** */
 
@@ -81,7 +85,7 @@ class App extends Component {
   editWorkout = index => {
     const { workouts } = this.state;
     
-    this.setState({ editExercise: [] });
+    this.setState({ editExercise: '' });
     this.setState(
       prevState => ({ editExercise: [...prevState.editExercise, workouts[index]] }),
       () => console.log(this.state.editExercise[0].title)
@@ -141,7 +145,7 @@ class App extends Component {
             <Modal.Title>Edit Workout Routine</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          <EditForm editExercise={this.state.editExercise} editSubmit={this.editSubmit} handleClose={this.handleClose} />
+          <EditForm editExercise={this.state.editExercise[0]} editSubmit={this.editSubmit} handleClose={this.handleClose} />
           </Modal.Body>
         </Modal>  
         
