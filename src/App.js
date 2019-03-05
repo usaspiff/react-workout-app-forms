@@ -17,19 +17,19 @@ class App extends Component {
     workouts: [
       {
         title: "workoutOne",
-        exercises: ["situps", "planks"]
+        exercises: ["situps", "plank"]
       },
       {
         title: "workoutTwo",
-        exercises: ["situpss", "plankss"]
+        exercises: ["situps", "plank"]
       },
       {
         title: "workoutThree",
-        exercises: ["situpsss", "planksss"]
+        exercises: ["situps", "plank"]
       },
       {
         title: "workoutFor",
-        exercises: ["situpssss", "plankssss"]
+        exercises: ["situps", "plank"]
       }
     ],
 
