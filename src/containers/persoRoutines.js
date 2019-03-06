@@ -6,10 +6,9 @@ const TableHeader = () => {
     return (
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Workout</th>
                 <th>Edit</th>
                 <th>Delete</th>
-                <th>Start</th>
             </tr>
         </thead>
     );
@@ -29,11 +28,6 @@ const TableBody = props => {
           <td>
             <Button onClick={() => props.removeWorkout(index)}>
               Delete
-            </Button>
-          </td>
-          <td>
-            <Button onClick={() => props.startWorkout(row)}>
-              Start
             </Button>
           </td>
         </tr>;

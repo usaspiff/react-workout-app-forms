@@ -16,21 +16,17 @@ class App extends Component {
   state = {
     workouts: [
       {
-        title: "workoutOne",
-        exercises: ["situps", "plank"]
+        title: "Abs",
+        exercises: ["situps", "plank", "pushups"]
       },
       {
-        title: "workoutTwo",
-        exercises: ["situps", "plank"]
+        title: "Arms",
+        exercises: ["bicepscurls", "tricepsextention", "benchpress"]
       },
       {
-        title: "workoutThree",
-        exercises: ["situps", "plank"]
+        title: "Legs",
+        exercises: ["squats", "lounges", "calvesstretch"]
       },
-      {
-        title: "workoutFor",
-        exercises: ["situps", "plank"]
-      }
     ],
 
     showForm: false,

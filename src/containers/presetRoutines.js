@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import Button from "react-bootstrap/Button";
+
 
 const TableHeader = () => {
     return (
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Workout</th>
             </tr>
         </thead>
     );
@@ -14,7 +16,11 @@ const TableBody = props => {
     const rows = props.workoutData.slice(0, 3).map((row, index) => {
         return (
              <tr key={index}>
-            <td>{row.title}</td>
+            <td>
+                <Button onClick={() => props.startWorkout(row)}>
+                    {row.title}
+                </Button>
+            </td>
         </tr>
         );
     });
