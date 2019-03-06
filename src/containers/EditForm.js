@@ -96,7 +96,7 @@ class EditForm extends Component {
                 />
 
                 <ButtonForm
-                    action={this.submitEditForm}
+                    action={this.state.newRoutine.title !== '' && this.state.newRoutine.exercises.length > 0 && this.submitEditForm}
                     type={'primary'}
                     title={'Update'}
                     // style={buttonStyle}

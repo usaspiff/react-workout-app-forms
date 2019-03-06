@@ -98,7 +98,7 @@ class FormContainer extends Component {
           handleChange={this.handleCheckBox}
         />
         <ButtonForm
-          action={this.submitForm}
+          action={this.state.newRoutine.title !== '' && this.state.newRoutine.exercises.length > 0 && this.submitForm}
           type={"primary"}
           title={"Submit"}
         />
