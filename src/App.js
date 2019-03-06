@@ -41,8 +41,8 @@ class App extends Component {
     editExercise: '',
   };
 
-  
-  
+
+
 
   /* LOCALSTORAGE */
   componentDidMount() {
@@ -50,9 +50,9 @@ class App extends Component {
       const savedRoutines = JSON.parse(localStorage.getItem("workouts"));
       this.setState({ workouts: savedRoutines });
     }
-    
+
   }
-  
+
 
   componentDidUpdate() {
     localStorage.setItem("workouts", JSON.stringify(this.state.workouts));
@@ -62,7 +62,7 @@ class App extends Component {
   /* ******************************** */
 
   handleClose = () => {
-    this.setState({ 
+    this.setState({
       showForm: false,
       showEditForm: false
     });
@@ -84,10 +84,13 @@ class App extends Component {
 
   editWorkout = index => {
     const { workouts } = this.state;
-    
-    this.setState({ editExercise: '' });
+
+    this.setState({
+      editExercise: '',
+      editIndex: index + 3
+    });
     this.setState(
-      prevState => ({ editExercise: [...prevState.editExercise, workouts[index]] }),
+      prevState => ({ editExercise: [...prevState.editExercise, workouts[index + 3]] }),
       () => console.log(this.state.editExercise[0].title)
     );
     this.setState({ showEditForm: true });
@@ -106,6 +109,19 @@ class App extends Component {
     );
   };
 
+  editSubmit = workout => {
+    const workouts = [...this.state.workouts];
+    workouts[this.state.editIndex] = workout;
+    this.setState({
+      workouts,
+      showEditForm: false,
+      editIndex: ''
+    });
+    this.setState({
+
+    });
+  };
+
   handleSubmit = workout => {
     this.setState(
       prevState => ({ workouts: [...prevState.workouts, workout] }),
@@ -116,44 +132,44 @@ class App extends Component {
 
   render() {
     const { workouts } = this.state;
-    
+
     return <div className="col-md-6" style={{ marginLeft: "40px" }}>
-        <Header />
+      <Header />
 
       {this.state.showPlayback === true && <Playback handlePlayback={this.handlePlayback} selectedExercise={this.state.selectedExercise} />}
 
-        {workouts.length > 3 ? <TablePerso workoutData={workouts} editWorkout={this.editWorkout} removeWorkout={this.removeWorkout} startWorkout={this.startWorkout} /> : <h3>
-            No personnal routine yet
+      {workouts.length > 3 ? <TablePerso workoutData={workouts} editWorkout={this.editWorkout} removeWorkout={this.removeWorkout} startWorkout={this.startWorkout} /> : <h3>
+        No personnal routine yet
           </h3>}
 
-        <Button variant="primary" onClick={this.handleShow}>
-          + Create Routine
+      <Button variant="primary" onClick={this.handleShow}>
+        + Create Routine
         </Button>
 
-        <Modal show={this.state.showForm} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>New workout routine</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <FormContainer handleSubmit={this.handleSubmit} />
-          </Modal.Body>
-        </Modal>
+      <Modal show={this.state.showForm} onHide={this.handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>New workout routine</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <FormContainer handleSubmit={this.handleSubmit} />
+        </Modal.Body>
+      </Modal>
 
 
-        <Modal show={this.state.showEditForm} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Edit Workout Routine</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
+      <Modal show={this.state.showEditForm} onHide={this.handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Workout Routine</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <EditForm editExercise={this.state.editExercise[0]} editSubmit={this.editSubmit} handleClose={this.handleClose} />
-          </Modal.Body>
-        </Modal>  
-        
+        </Modal.Body>
+      </Modal>
 
-        <TablePreset workoutData={workouts} startWorkout={this.startWorkout} />
 
-        <Footer />
-      </div>;
+      <TablePreset workoutData={workouts} startWorkout={this.startWorkout} />
+
+      <Footer />
+    </div>;
   }
 }
 

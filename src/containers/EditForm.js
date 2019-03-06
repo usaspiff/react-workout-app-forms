@@ -66,7 +66,7 @@ class EditForm extends Component {
 
     submitEditForm = (e) => {
         e.preventDefault();
-        this.props.handleSubmit(this.state.newRoutine);
+        this.props.editSubmit(this.state.newRoutine);
         console.log(this.state.newRoutine)
         this.setState(this.initialState);
     }
