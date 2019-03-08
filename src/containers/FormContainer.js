@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import ButtonForm from "../components/Button";
 import Input from "../components/Input";
 import CheckBox from "../components/CheckBox";
@@ -18,12 +17,12 @@ class FormContainer extends Component {
         "situps",
         "plank",
         "pushups",
-        "bicepscurls",
-        "tricepsextention",
+        "biceps curls",
+        "triceps extention",
         "benchpress",
         "squats",
         "lounges",
-        "calvesstretch"
+        "calves stretch"
       ],
       showForm: props.showForm
     };
@@ -39,8 +38,7 @@ class FormContainer extends Component {
   handleTitle(e) {
     let value = e.target.value;
     this.setState(
-      prevState => ({ newRoutine: { ...prevState.newRoutine, title: value } }),
-      () => console.log(this.state.newRoutine.title)
+      prevState => ({ newRoutine: { ...prevState.newRoutine, title: value } })
     );
   }
 
@@ -49,16 +47,14 @@ class FormContainer extends Component {
     let newSelectionArray;
 
     if (this.state.newRoutine.exercises.indexOf(newSelection) > -1) {
-      newSelectionArray = this.state.newRoutine.exercises.filter(
-        s => s !== newSelection
-      );
+      newSelectionArray = this.state.newRoutine.exercises.filter(s => s !== newSelection);
     } else {
       newSelectionArray = [...this.state.newRoutine.exercises, newSelection];
     }
-
     this.setState(prevState => ({
       newRoutine: { ...prevState.newRoutine, exercises: newSelectionArray }
-    }));
+    })
+    );
   }
 
   handleClearForm(e) {
@@ -74,7 +70,6 @@ class FormContainer extends Component {
   submitForm = e => {
     e.preventDefault();
     this.props.handleSubmit(this.state.newRoutine);
-    console.log(this.state.newRoutine);
     this.setState(this.initialState);
   };
 
@@ -112,9 +107,5 @@ class FormContainer extends Component {
     );
   }
 }
-
-// const buttonStyle = {
-//     margin: '10px 10px 10px 10px'
-// }
 
 export default FormContainer;

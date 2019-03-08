@@ -9,9 +9,7 @@ const ButtonForm = (props) => {
             onClick={props.action} >
             {props.title}
         </Button>
-    )
-        
-    
-    }
+    )  
+}
 
 export default ButtonForm;

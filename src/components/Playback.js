@@ -37,7 +37,7 @@ class Playback extends Component {
             return <li key={index}>{exercise}</li>
         }
         });
-        console.log(displayExercise)
+
         return (
             <div>
                 <h2>{this.props.selectedExercise[0].title}</h2>

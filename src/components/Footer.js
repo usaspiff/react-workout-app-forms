@@ -7,7 +7,7 @@ const Footer = () => {
             style={footerStyle}
         >
         <hr></hr>
-            <p>copyright (c) 2018</p>
+            <p>copyright (c) 2019</p>
         </div>
     )
 }

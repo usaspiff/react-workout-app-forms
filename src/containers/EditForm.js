@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import ButtonForm from '../components/Button';
 import Input from '../components/Input';
 import CheckBox from '../components/CheckBox';
@@ -37,7 +36,8 @@ class EditForm extends Component {
         this.setState(prevState => ({
             newRoutine:
                 { ...prevState.newRoutine, title: value }
-        }), () => console.log(this.state.newRoutine.title))
+        })
+        )
     }
 
     handleCheckBox(e) {
@@ -49,8 +49,10 @@ class EditForm extends Component {
         } else {
             newSelectionArray = [...this.state.newRoutine.exercises, newSelection];
         }
-
-        this.setState(prevState => ({ newRoutine: { ...prevState.newRoutine, exercises: newSelectionArray } }))
+        this.setState(prevState => ({ 
+            newRoutine: { ...prevState.newRoutine, exercises: newSelectionArray } 
+        })
+        )
     }
 
     handleCancelForm(e) {
@@ -67,15 +69,12 @@ class EditForm extends Component {
     submitEditForm = (e) => {
         e.preventDefault();
         this.props.editSubmit(this.state.newRoutine);
-        console.log(this.state.newRoutine)
         this.setState(this.initialState);
     }
 
     render() {
         const editRoutineTitle = this.state.newRoutine.title;
-        console.log(this.state.newRoutine)
         return (
-
             <form className='container-fluid' onSubmit={this.submitEditForm}>
 
                 <Input
@@ -99,14 +98,12 @@ class EditForm extends Component {
                     action={this.state.newRoutine.title !== '' && this.state.newRoutine.exercises.length > 0 && this.submitEditForm}
                     type={'primary'}
                     title={'Update'}
-                    // style={buttonStyle}
                 />
 
                 <ButtonForm
                     action={this.handleCancelForm}
                     type={'secondary'}
                     title={'Cancel'}
-                    // style={buttonStyle}
                 />
 
             </form>
@@ -115,11 +112,5 @@ class EditForm extends Component {
     }
 
 }
-
-// const buttonStyle = {
-//     margin: '10px 10px 10px 10px'
-// }
-
-
 
 export default EditForm;
