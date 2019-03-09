@@ -6,7 +6,7 @@ const TableHeader = () => {
     return (
         <thead>
             <tr>
-                <th>Workout</th>
+                <th>Workouts</th>
             </tr>
         </thead>
     );
@@ -15,13 +15,16 @@ const TableHeader = () => {
 const TableBody = props => {
     const rows = props.workoutData.slice(0, 3).map((row, index) => {
         return (
-             <tr key={index}>
-            <td>
-                <Button onClick={() => props.startWorkout(row)}>
-                    {row.title}
-                </Button>
-            </td>
-        </tr>
+            <tr key={index}>
+                <td>
+                    <Button variant="light" 
+                            onClick={() => props.startWorkout(row)}
+                            style={{ marginBottom: '5px', marginTop: '5px' }}
+                    >
+                        {row.title}
+                    </Button>
+                </td>
+            </tr>
         );
     });
 
@@ -32,8 +35,8 @@ class TablePreset extends Component {
     render() {
         const { workoutData, startWorkout } = this.props;
 
-        return <div>
-            <h3>Preset workout routines</h3>
+        return <div style={tablePresetStyle}>
+            <h4>Preset workout routines</h4>
             <table>
                 <TableHeader />
                 <TableBody workoutData={workoutData} startWorkout={startWorkout} />
@@ -41,5 +44,11 @@ class TablePreset extends Component {
         </div>;
     }
 }
+
+const tablePresetStyle = {
+  borderTop: "1px solid #e9eaec",
+  marginTop: "30px",
+  paddingTop: "10px"
+};
 
 export default TablePreset;

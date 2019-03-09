@@ -26,7 +26,11 @@ class Playback extends Component {
 
     render() {
         const selectedExerciseStyle = {
-            color: 'red',
+            color: "red",
+            backgroundColor: "#fad02c",
+            display: "flex",
+            justifyContent: "center"
+          
         };
         const listIndex = this.state.listIndex;
         const displayExercise = this.props.selectedExercise[0].exercises[listIndex];
@@ -34,23 +38,80 @@ class Playback extends Component {
         const exerciseList = exercises.map((exercise, index) => { if(index === this.state.listIndex) {
             return <li key={index} style={selectedExerciseStyle}>{exercise}</li>  
         } else {
-            return <li key={index}>{exercise}</li>
+            return (
+              <li style={playbackStyle} key={index}>
+                {exercise}
+              </li>
+            );
         }
         });
 
         return (
-            <div>
-                <h2>{this.props.selectedExercise[0].title}</h2>
-                <span>
-                    <Button onClick={this.decrement}>Prev.</Button>{displayExercise}<Button onClick={this.increment}>Next</Button></span>
-                <ul>
-                    {exerciseList}
-                </ul>
-                <Button onClick={this.closePlayback}>Close</Button>
+          <div className="container-fluid" style={playbackBackground}>
+            <h2 style={playbackStyle}>
+              {this.props.selectedExercise[0].title}
+            </h2>
+            <span style={playbackBody}>
+              <Button
+                style={playbackButton}
+                variant="info"
+                onClick={this.decrement}
+              >
+                Prev.
+              </Button>
+              {displayExercise}
+              <Button
+                style={playbackButton}
+                variant="info"
+                onClick={this.increment}
+              >
+                Next
+              </Button>
+            </span>
+            <ul style={{ backgroundColor: "#fad02c" }}>
+              {exerciseList}
+            </ul>
+                <div style={playbackCloseButton}>
+                <Button
+                    variant="secondary"
+                    onClick={this.closePlayback}>Close
+                </Button>
             </div>
+                
+          </div>
         );
     }
 }
 
+const playbackBackground = {
+  backgroundColor: '#fad02c',
+  borderRadius: '5px',
+};
+
+const playbackStyle = {
+  backgroundColor: "#fad02c",
+  color: "#333652",
+  display: "flex",
+  justifyContent: "center"
+};
+
+const playbackBody = {
+  backgroundColor: "#fad02c",
+  color: "#333652",
+  display: "flex",
+  justifyContent: "center",
+  margin: "10px 20px 10px 20px",
+};
+
+const playbackButton = {
+    margin: "0px 20px 0px 20px",
+}
+
+const playbackCloseButton = {
+  backgroundColor: "#fad02c",
+  display: "flex",
+  justifyContent: "space-around",
+  padding: "10px 0px 10px 0px"
+};
 
 export default Playback;

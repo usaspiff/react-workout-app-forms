@@ -96,7 +96,7 @@ class EditForm extends Component {
 
                 <ButtonForm
                     action={this.state.newRoutine.title !== '' && this.state.newRoutine.exercises.length > 0 && this.submitEditForm}
-                    type={'primary'}
+                    type={'warning'}
                     title={'Update'}
                 />
 
@@ -104,6 +104,7 @@ class EditForm extends Component {
                     action={this.handleCancelForm}
                     type={'secondary'}
                     title={'Cancel'}
+                    style={{marginLeft: '35px'}}
                 />
 
             </form>

@@ -122,41 +122,83 @@ class App extends Component {
   render() {
     const { workouts } = this.state;
 
-    return <div className="col-md-6" style={{ marginLeft: "40px" }}>
+    return (
+      <div className="container-fluid" style={appStyle}>
+        <Header />
 
-      <Header />
+        {this.state.showPlayback === true && (
+          
+          <Playback
+            handlePlayback={this.handlePlayback}
+            selectedExercise={this.state.selectedExercise}
+          />
+        )}
 
-      {this.state.showPlayback === true && <Playback handlePlayback={this.handlePlayback} selectedExercise={this.state.selectedExercise} />}
+        {workouts.length > 3 ? (
+          <TablePerso
+            workoutData={workouts}
+            editWorkout={this.editWorkout}
+            removeWorkout={this.removeWorkout}
+            startWorkout={this.startWorkout}
+          />
+        ) : (
+          <h4>No personnal routines yet</h4>
+        )}
+        <div style={{ marginTop: "20px" }}>
+          <Button variant="warning" onClick={this.handleShow}>
+            + create routine
+          </Button>
+        </div>
 
-      {workouts.length > 3 ? <TablePerso workoutData={workouts} editWorkout={this.editWorkout} removeWorkout={this.removeWorkout} startWorkout={this.startWorkout} /> : <h3>No personnal routines yet</h3>}
+        <Modal
+          style={modalStyle}
+          show={this.state.showForm}
+          onHide={this.handleClose}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>New workout routine</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <FormContainer handleSubmit={this.handleSubmit} />
+          </Modal.Body>
+        </Modal>
 
-      <Button variant="primary" onClick={this.handleShow}>
-        + create routine
-      </Button>
+        <Modal
+          style={modalStyle}
+          show={this.state.showEditForm}
+          onHide={this.handleClose}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Edit Workout Routine</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <EditForm
+              editExercise={this.state.editExercise[0]}
+              editSubmit={this.editSubmit}
+              handleClose={this.handleClose}
+            />
+          </Modal.Body>
+        </Modal>
 
-      <Modal show={this.state.showForm} onHide={this.handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>New workout routine</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <FormContainer handleSubmit={this.handleSubmit} />
-        </Modal.Body>
-      </Modal>
+        <TablePreset
+          workoutData={workouts}
+          startWorkout={this.startWorkout}
+        />
 
-      <Modal show={this.state.showEditForm} onHide={this.handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Edit Workout Routine</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <EditForm editExercise={this.state.editExercise[0]} editSubmit={this.editSubmit} handleClose={this.handleClose} />
-        </Modal.Body>
-      </Modal>
-
-      <TablePreset workoutData={workouts} startWorkout={this.startWorkout} />
-
-      <Footer />
-    </div>;
+        <Footer />
+      </div>
+    );
   }
 }
+
+const appStyle = {
+  backgroundColor: "#333652",
+  color: "#e9eaec",
+};
+
+const modalStyle = {
+  backgroundColor: "#90adc6",
+  color: "#90adc6"
+};
 
 export default App;

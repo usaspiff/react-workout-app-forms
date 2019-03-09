@@ -2,18 +2,17 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <div
-            className='container-fluid'
-            style={headerStyle}
-        >
-        <h1>WORKOUT APP</h1>
-        <hr></hr>
+        <div style={headerStyle}>
+        <h2 style={{paddingBottom: "20px"}}>WORKOUT APP</h2>
         </div>
     )
 }
 
 const headerStyle = {
-    margin: '50px 10px 50px 10px'
+    margin: "40px 0px 15px 0px",
+    borderBottom: "1px solid #e9eaec",
+    display: "flex",
+    justifyContent: "center",
 }
 
 export default Header;

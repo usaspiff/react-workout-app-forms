@@ -6,9 +6,7 @@ const TableHeader = () => {
     return (
         <thead>
             <tr>
-                <th>Workout</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th style={{minWidth: "150px"}}>Workouts</th>
             </tr>
         </thead>
     );
@@ -16,21 +14,36 @@ const TableHeader = () => {
 
 const TableBody = props => {
     const rows = props.workoutData.slice(3).map((row, index) => {
-        return <tr key={index}>
-          <td>
-            <Button onClick={() => props.startWorkout(row)}>
-              {row.title}
-            </Button>
-          </td>
-          <td>
-            <Button onClick={() => props.editWorkout(index)}>Edit</Button>
-          </td>
-          <td>
-            <Button onClick={() => props.removeWorkout(index)}>
-              Delete
-            </Button>
-          </td>
-        </tr>;
+        return (
+          <tr key={index}>
+            <td>
+              <Button
+                variant="light"
+                onClick={() => props.startWorkout(row)}
+              >
+                {row.title}
+              </Button>
+            </td>
+            <td>
+              <Button
+                variant="outline-info"
+                onClick={() => props.editWorkout(index)}
+                style={{ marginLeft: "5px" }}
+              >
+                Edit
+              </Button>
+            </td>
+            <td>
+              <Button
+                variant="outline-danger"
+                onClick={() => props.removeWorkout(index)}
+                style={{ marginLeft: "5px" }}
+              >
+                Delete
+              </Button>
+            </td>
+          </tr>
+        );
     });
 
     return <tbody>{rows}</tbody>;
@@ -41,10 +54,10 @@ class TablePerso extends Component {
         const { workoutData, editWorkout, removeWorkout, startWorkout } = this.props;
 
         return <div>
-            <h3>Personnal workout routines</h3>
+            <h4>Personnal workout routines</h4>
             <table>
               <TableHeader />
-              <TableBody workoutData={workoutData} editWorkout={editWorkout} removeWorkout={removeWorkout}
+              <TableBody  workoutData={workoutData} editWorkout={editWorkout} removeWorkout={removeWorkout}
               startWorkout={startWorkout} />
             </table>
           </div>;

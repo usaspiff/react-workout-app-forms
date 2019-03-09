@@ -94,7 +94,7 @@ class FormContainer extends Component {
         />
         <ButtonForm
           action={this.state.newRoutine.title !== '' && this.state.newRoutine.exercises.length > 0 && this.submitForm}
-          type={"primary"}
+          type={"warning"}
           title={"Submit"}
         />
 
@@ -102,6 +102,7 @@ class FormContainer extends Component {
           action={this.handleClearForm}
           type={"secondary"}
           title={"Clear"}
+          style={{ marginLeft: '35px' }}
         />
       </form>
     );

@@ -2,18 +2,18 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div
-            className='container-fluid'
-            style={footerStyle}
-        >
-        <hr></hr>
-            <p>copyright (c) 2019</p>
-        </div>
-    )
+      <div style={footerStyle}>
+            <p style={{paddingTop: '50px'}}>Project by Nick Tchemitcheff<br /> 2019 <br />Check it out on <a href="https://github.com/usaspiff/workout-test-3"> Github</a >.</p>
+      </div>
+    );
 }
 
 const footerStyle = {
-    margin: '50px 10px 50px 10px'
-}
+  margin: "110px 0px 50px 0px",
+  borderTop: "1px solid #e9eaec",
+  display: "flex",
+  textAlign: 'center',
+  justifyContent: "center",
+};
 
 export default Footer;
