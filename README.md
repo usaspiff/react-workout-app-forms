@@ -1,44 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### React Workout App Forms
 
-## Available Scripts
+This React app lets the user select their workout routines with lists of exercises, and create/edit/delete their personnal routines.<br>
 
-In the project directory, you can run:
+### Credits
 
-### `npm start`
+Those two fantastics tutorials helped me get on track with this projects:<br>
+[Getting Started with React – An Overview and Walkthrough](https://www.taniarascia.com/getting-started-with-react/) by Tania Rascia.
+[Building forms using React — everything you need to know](https://www.codementor.io/blizzerand/building-forms-using-react-everything-you-need-to-know-iz3eyoq4y) by Manjunath on Codementor Community.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Things Learned
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+The goal was to develop a personnal project to master React by creating an app that encompasses all the main concepts listed in the official React docs page such as:
+* Rendering elements
+* Components and props
+* State and lifecycle
+* Handling events
+* Conditional rendering
+* Lists and keys
+* Forms
+* Lifting state up
+* Composition vs inheritance
 
-### `npm test`
+### What's Next?
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+List of improvements to make and features to add in the future:
+* Authentication with Firebase to store routines
+* Improve styling - clean up CSS
+* Ability to create individual exercises to form
+* Select number of reps per exercise
+* Group exercises by categories in form
+* Improve playback experience
 
-### `npm run build`
+### Dev section
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).<br>
+Run `npm start` to run the app in the development mode.
