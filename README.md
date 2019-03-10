@@ -5,7 +5,7 @@ This React app lets the user select their workout routines with lists of exercis
 ### Credits
 
 Those two fantastics tutorials helped me get on track with this projects:<br>
-[Getting Started with React – An Overview and Walkthrough](https://www.taniarascia.com/getting-started-with-react/) by Tania Rascia.
+[Getting Started with React – An Overview and Walkthrough](https://www.taniarascia.com/getting-started-with-react/) by Tania Rascia.<br>
 [Building forms using React — everything you need to know](https://www.codementor.io/blizzerand/building-forms-using-react-everything-you-need-to-know-iz3eyoq4y) by Manjunath on Codementor Community.
 
 ### Things Learned
