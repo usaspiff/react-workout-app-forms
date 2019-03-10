@@ -20,6 +20,7 @@ const TableBody = props => {
               <Button
                 variant="light"
                 onClick={() => props.startWorkout(row)}
+                style={{ marginBottom: "5px", marginTop: "5px" }}
               >
                 {row.title}
               </Button>
@@ -28,7 +29,7 @@ const TableBody = props => {
               <Button
                 variant="outline-info"
                 onClick={() => props.editWorkout(index)}
-                style={{ marginLeft: "5px" }}
+                style={{ margin: "5px 5px 5px 5px" }}
               >
                 Edit
               </Button>
@@ -37,7 +38,7 @@ const TableBody = props => {
               <Button
                 variant="outline-danger"
                 onClick={() => props.removeWorkout(index)}
-                style={{ marginLeft: "5px" }}
+                style={{ margin: "5px 5px 5px 5px" }}
               >
                 Delete
               </Button>

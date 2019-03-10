@@ -1,9 +1,22 @@
 import React from 'react';
+import githubLogo from "../assets/GitHub-Mark-Light-32px.png";
 
 const Footer = () => {
     return (
       <div style={footerStyle}>
-            <p style={{paddingTop: '50px'}}>Project by Nick Tchemitcheff<br /> 2019 <br />Check it out on <a href="https://github.com/usaspiff/workout-test-3"> Github</a >.</p>
+        <p style={{ paddingTop: "50px" }}>
+          Nick Tchemitcheff
+          <br />
+          2019
+          <br />
+          <a href="https://github.com/usaspiff/workout-test-3">
+            <img
+              style={{ marginTop: "10px" }}
+              src={githubLogo}
+              alt="link to github"
+            />
+          </a>
+        </p>
       </div>
     );
 }

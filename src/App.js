@@ -53,6 +53,7 @@ class App extends Component {
   }
   /* ************LOCAL STORAGE******************** */
 
+  //Close forms
   handleClose = () => {
     this.setState({
       showForm: false,
@@ -60,6 +61,7 @@ class App extends Component {
     });
   };
 
+  //Display forms
   handleShow = () => {
     this.setState({ showForm: true });
   };
@@ -87,10 +89,12 @@ class App extends Component {
     this.setState({ showEditForm: true });
   };
 
+  //Hide the workout playback section
   handlePlayback = () => {
     this.setState({ showPlayback: false });
   };
 
+  //Display the workout playback section
   startWorkout = row => {
     this.setState({ 
       showPlayback: true,
@@ -101,6 +105,7 @@ class App extends Component {
     );
   };
 
+  //Edit the workout routine by pushing the indexed routine to State
   editSubmit = workout => {
     const workouts = [...this.state.workouts];
     workouts[this.state.editIndex] = workout;
@@ -112,6 +117,7 @@ class App extends Component {
     });
   };
 
+  //Push the new workout form entry to State
   handleSubmit = workout => {
     this.setState(
       prevState => ({ workouts: [...prevState.workouts, workout] }),
@@ -144,6 +150,7 @@ class App extends Component {
         ) : (
           <h4>No personnal routines yet</h4>
         )}
+        
         <div style={{ marginTop: "20px" }}>
           <Button variant="warning" onClick={this.handleShow}>
             + create routine
