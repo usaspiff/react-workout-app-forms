@@ -1,4 +1,4 @@
-### React Workout App Forms
+## React Workout App Forms
 
 This React app lets the user select their workout routines with lists of exercises, and create/edit/delete their personnal routines.<br>
 
@@ -30,6 +30,7 @@ List of improvements to make and features to add in the future:
 * Select number of reps per exercise
 * Group exercises by categories in form
 * Improve playback experience
+* Improve form validation
 
 ### Dev section
 
