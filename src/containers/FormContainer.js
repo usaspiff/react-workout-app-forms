@@ -14,15 +14,15 @@ class FormContainer extends Component {
       },
 
       exercisesList: [
-        "situps",
-        "plank",
-        "pushups",
-        "biceps curls",
-        "triceps extention",
-        "benchpress",
-        "squats",
-        "lounges",
-        "calves stretch"
+        "Situps",
+        "Plank",
+        "Pushups",
+        "Biceps curls",
+        "Triceps extention",
+        "Bench press",
+        "Squats",
+        "Lounges",
+        "Calves stretch"
       ],
       showForm: props.showForm
     };

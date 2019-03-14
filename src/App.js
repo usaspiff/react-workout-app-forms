@@ -17,15 +17,15 @@ class App extends Component {
     workouts: [
       {
         title: "Abs",
-        exercises: ["situps", "plank", "pushups"]
+        exercises: ["Situps", "Plank", "Pushups"]
       },
       {
         title: "Arms",
-        exercises: ["biceps curls", "triceps extention", "benchpress"]
+        exercises: ["Biceps curls", "Triceps extention", "Bench press"]
       },
       {
         title: "Legs",
-        exercises: ["squats", "lounges", "calves stretch"]
+        exercises: ["Squats", "Lunges", "Calves stretch"]
       },
     ],
 
@@ -148,7 +148,7 @@ class App extends Component {
             startWorkout={this.startWorkout}
           />
         ) : (
-          <h4>No personnal routines yet</h4>
+          <h4>No personal routines yet</h4>
         )}
         
         <div style={{ marginTop: "20px" }}>

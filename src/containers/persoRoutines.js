@@ -55,7 +55,7 @@ class TablePerso extends Component {
         const { workoutData, editWorkout, removeWorkout, startWorkout } = this.props;
 
         return <div>
-            <h4>Personnal workout routines</h4>
+            <h4>Personal workout routines</h4>
             <table>
               <TableHeader />
               <TableBody  workoutData={workoutData} editWorkout={editWorkout} removeWorkout={removeWorkout}

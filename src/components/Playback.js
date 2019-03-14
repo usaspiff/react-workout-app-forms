@@ -27,10 +27,7 @@ class Playback extends Component {
     render() {
         const selectedExerciseStyle = {
             color: "red",
-            backgroundColor: "#fad02c",
-            display: "flex",
-            justifyContent: "center"
-          
+            backgroundColor: "#fad02c",         
         };
         const listIndex = this.state.listIndex;
         const displayExercise = this.props.selectedExercise[0].exercises[listIndex];
@@ -39,7 +36,7 @@ class Playback extends Component {
             return <li key={index} style={selectedExerciseStyle}>{exercise}</li>  
         } else {
             return (
-              <li style={playbackStyle} key={index}>
+              <li style={playbackStyleList} key={index}>
                 {exercise}
               </li>
             );
@@ -68,6 +65,7 @@ class Playback extends Component {
                 Next
               </Button>
             </span>
+            <hr></hr>
             <ul style={{ backgroundColor: "#fad02c" }}>
               {exerciseList}
             </ul>
@@ -86,6 +84,7 @@ class Playback extends Component {
 const playbackBackground = {
   backgroundColor: '#fad02c',
   borderRadius: '5px',
+  maxWidth: '350px',
 };
 
 const playbackStyle = {
@@ -95,16 +94,25 @@ const playbackStyle = {
   justifyContent: "center"
 };
 
+const playbackStyleList = {
+  backgroundColor: "#fad02c",
+  color: "#333652",
+  display: "flex",
+  justifyContent: "space-between",
+  flexDirection: "column"
+};
+
 const playbackBody = {
   backgroundColor: "#fad02c",
   color: "#333652",
   display: "flex",
-  justifyContent: "center",
-  margin: "10px 20px 10px 20px",
+  justifyContent: "space-between",
+  marginBottom: "10px",
 };
 
 const playbackButton = {
-    margin: "0px 20px 0px 20px",
+    display: "flex",
+    justifyContent: "space-between",
 }
 
 const playbackCloseButton = {

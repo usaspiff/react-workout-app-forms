@@ -1,6 +1,6 @@
 ## React Workout App Forms
 
-This CRUD React app lets the user select their workout routines with lists of exercises, and create/edit/delete their personnal routines.<br>
+This CRUD React app lets the user select their workout routines with lists of exercises and create/edit/delete their personal routines.<br>
 Check it out live [here](https://affectionate-goldwasser-0b06ea.netlify.com/), hosted on Netlify.
 
 ### Credits
@@ -11,7 +11,7 @@ These two fantastics tutorials helped me get started with this project:<br>
 
 ### Things Learned
 
-The goal was to develop a personnal project  from scratch to master React by creating an app that encompasses all the main concepts listed in the official React docs page such as:
+The goal was to develop a personal project from scratch to master React by creating an app that encompasses all the main concepts listed in the official React docs page such as:
 * Rendering elements
 * Components and props
 * State and lifecycle

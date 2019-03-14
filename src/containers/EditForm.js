@@ -11,15 +11,15 @@ class EditForm extends Component {
             newRoutine: this.props.editExercise,
 
             exercisesList: [
-                'situps',
-                'plank',
-                'pushups',
-                'bicepscurls',
-                'tricepsextention',
-                'benchpress',
-                'squats',
-                'lounges',
-                'calvesstretch'
+                'Situps',
+                'Plank',
+                'Pushups',
+                'Biceps curls',
+                'Triceps extention',
+                'Bench press',
+                'Squats',
+                'Lunges',
+                'Calves stretch'
             ]
         }
 
