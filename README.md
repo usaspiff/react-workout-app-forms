@@ -1,7 +1,11 @@
 ## React Workout App Forms
 
 This CRUD React app lets the user select their workout routines with lists of exercises and create/edit/delete their personal routines.<br>
-Check it out live [here](https://affectionate-goldwasser-0b06ea.netlify.com/), hosted on Netlify.
+Check it out live [here](https://affectionate-goldwasser-0b06ea.netlify.com/), hosted on Netlify, or play around with it on [Codesandbox](https://codesandbox.io/s/o77534jkqq)
+<br>
+<p align="center">
+  <img src="https://github.com/usaspiff/react-workout-app-forms/blob/master/react-workout.gif">
+</p>
 
 ### Credits
 
